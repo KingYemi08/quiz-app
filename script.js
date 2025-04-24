@@ -157,8 +157,8 @@ function loginUser(){
         let studentsData = JSON.parse(localStorage.getItem('students')) || []
         let foundUser = studentsData.find(user => user.user_name === convertedUser &&  user.user_school === convertedSchool)
         let finUsers = JSON.parse(localStorage.getItem('finishedUsers'))
-        let doneUSer = finUsers.find(user => user.name === convertedUser &&  user.school === convertedSchool)
-        
+        if(finUsers !== null){
+           let doneUSer = finUsers.find(user => user.name === convertedUser &&  user.school === convertedSchool)
         if(doneUSer){
             window.location.href = 'Analysis.html'
             document.getElementById('loginForm').reset()
@@ -169,6 +169,16 @@ function loginUser(){
         }else{
             alert('User not registered')
         }
+        }else{
+            if(foundUser){
+                localStorage.setItem('currentUser', JSON.stringify(foundUser))
+                window.location.href = 'Quiz.html'
+                document.getElementById('loginForm').reset()
+            }else{
+                alert('User not registered')
+            }
+        }   
+        
 
     
     }
