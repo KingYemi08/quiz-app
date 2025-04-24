@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+        <div class="w-full">
+            <div class="shadow-lg ps-2 py-3 flex justify-between items-center">
+                <h2 class="font-bold text-[16px] lg:text-xl">Lumen et Veritas  Academy Quiz Competition</h2>
+                <h2 class="text-[12px] lg:text[16px] pe-4">Registration ends at: 2025-05-01</h2>
+            </div>
+            <div class="flex flex-col items-center justify-center h-[86vh]">
+                <div class="border border-[#ccc] p-4 w-100  rounded">
+                    <form action=""  id="reg_form">
+                        <h2 class="text-center text-xl -mt-2 mb-3 underline">Register Here</h2>
+                        <div class="grid grid-cols-1  mb-3 relative">
+                            <div class=" ">
+                                <label for="">
+                                    School Name: <br>
+                                    <input type="text"  class=" outline-0 border border-[#ccc] rounded text-gray-900 mt-1 ps-1 py-2 w-full" id="screg_name">
+                                </label>
+                                <p class="text-[11px] absolute text-red-500" id="screg_name_err"></p>
+                            </div>
+                        </div>
+                       
+                        <div class="grid grid-cols-1 gap-2 mb-4 relative">
+                            <div class="">
+                                <label for="">
+                                    Email Address: <br>
+                                    <input type="text"  class=" outline-0 border border-[#ccc] rounded text-gray-900 mt-1 py-2 ps-1 w-full" id="screg_email">
+                                </label>
+                                <p class="text-[11px] absolute text-red-500" id="screg_email_err"></p>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="bg-gray-900 w-full mt-3 rounded cursor-pointer hover:bg-gray-800 py-[5px] text-white" onclick="registerSchool()">Register</button>
+                    <span class="mt-1">Student not registered? <a href="registration.html" class="text-center hover:text-blue-600 text-[14px]">Register Student</a></span>
+                </div>
+            </div>
+        </div>
+
+
+
+    <script src="script.js"></script>
+    <script>
+        let finUsers = JSON.parse(localStorage.getItem('finishedUsers'))
+let highestScore = finUsers.filter(user => user.score === Math.max.apply(Math, finUsers.map(o=>{return o.score})))
+
+
+highestScore.forEach(user => {
+    if(finUsers.length >= 3){
+
+document.getElementById('prevWinner').innerHTML += `
+    <li class= 'capitalize mt-2'>${user.school} - ${user.name}</li>
+    `
+}
+})
+    </script>
+</body>
+</html>

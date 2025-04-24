@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+        <div class="  w-full">
+            <div class="shadow-lg ps-2 py-3 flex justify-between items-center">
+                <h2 class="font-bold text-[13px] lg:text-xl">Lumen et Veritas  Academy Quiz Competition</h2>
+                <h2 class="text-[12px] lg:text[16px] pe-4">Registration ends at: 2025-05-01</h2>
+            </div>
+            <div class="flex flex-col items-center justify-center h-[86vh]">
+                <div class="border border-[#ccc] p-4  rounded">
+                    <form action=""  id="reg_form">
+                        <h2 class="text-center text-xl -mt-2 mb-3 underline">Register Here</h2>
+                        <div class="grid grid-cols-2 gap-2 items-center mb-3 relative">
+                            <div class="">
+                                <label for="">
+                                    Name: <br>
+                                    <input type="text"  class=" outline-0 border border-[#ccc] rounded text-gray-900 mt-1 ps-1 w-full" id="reg_name">
+                                </label>
+                                <p class="text-[11px] absolute text-red-500" id="reg_name_err"></p>
+                            </div>
+                            <div class="" >
+                                <select class=" outline-0 border border-[#ccc] rounded text-gray-900 mt-6.5  w-full " id="reg_school">
+                                    <option value=''>Select School</option>
+                                </select>
+                                <p class="text-[11px] absolute text-red-500" id="reg_school_err"></p>    
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-5">
+                            <label for="">
+                                Address(optional): <br>
+                                <input type="text"  class=" outline-0 border border-[#ccc] rounded text-gray-900 mt-1 py-3 ps-1 w-full">
+                            </label>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mb-4 relative">
+                            <div class="">
+                                <label for="">
+                                    Email Address: <br>
+                                    <input type="text"  class=" outline-0 border border-[#ccc] rounded text-gray-900 mt-1 ps-1 w-full" id="reg_email">
+                                </label>
+                                <p class="text-[11px] absolute text-red-500" id="reg_email_err"></p>
+                            </div>
+                            <div class="">
+                                <label for="">
+                                    Phone Number: <br>
+                                    <input type="text"  class=" outline-0 border border-[#ccc] rounded text-gray-900 mt-1 ps-1 w-full" id="reg_phone">
+                                </label>
+                                <p class="text-[11px] absolute text-red-500" id="reg_phone_err"></p>
+                            </div>
+                        </div>
+                    </form>
+
+                    <button class="bg-gray-900 w-full mt-3 rounded cursor-pointer hover:bg-gray-800 py-[5px] text-white" onclick="register()">Register</button>
+                    <span class="mt-1">School not registered? <a href="schoolreg.html" class="text-center hover:text-blue-600 text-[14px]">Register School</a></span>
+                </div>
+            </div>
+        </div>
+
+
+
+    <script src="script.js"></script>
+    <script>
+    const schools = JSON.parse(localStorage.getItem('schoolInfo')) || []
+    const schoolsCont = document.getElementById('reg_school')
+    
+    schools.forEach(item =>{
+        schoolsCont.innerHTML += `
+   <option value = '${item.name}'>${item.name}</option>
+`
+    })
+
+
+
+
+        let finUsers = JSON.parse(localStorage.getItem('finishedUsers'))
+let highestScore = finUsers.filter(user => user.score === Math.max.apply(Math, finUsers.map(o=>{return o.score})))
+
+
+highestScore.forEach(user => {
+    if(finUsers.length >= 3){
+
+document.getElementById('prevWinner').innerHTML += `
+    <li class= 'capitalize mt-2'>${user.school} - ${user.name}</li>
+    `
+}
+})
+    </script>
+</body>
+</html>

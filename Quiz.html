@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-900">
+    <div class="flex justify-between bg-white py-3 px-3">
+       <div class="">
+         <h2 id="sc_name" class="capitalize">School Name</h2>
+       </div>
+       <div class="">
+        <h2 id="cd_name" class="capitalize">Candidate Name</h2>
+       </div>
+       <div class="" id="timeDis">Time Left: 02:00</div>
+    </div>
+    <div class="ps-2 mt-3">
+        <button class="bg-white rounded text-gray-900 px-4 py-2 cursor-pointer hover:bg-gray-200" onclick="beginQuiz()">Start Quiz</button>
+    </div>
+    <div class="flex flex-col gap-5 items-center  justify-center h-[82vh]">
+        <!--Quiz container-->
+    <div class="py-6 px-5 rounded bg-white w-[90%] lg:max-w-[45%] shadow-lg">
+        <!--question container-->
+        <div class="mb-10 py-8 bg-gray-900 px-4 rounded-xl text-white">
+            <h1 class="text-center text-2xl lg:text-4xl font-semibold font-sans" id="questionDisplay" ></h1>
+        </div>
+        <!--option container-->
+        <div class="gap-4 grid" id="optionCont">
+            <!--each option-->
+            <div class="flex justify-center">
+                <button class="option bg-white shadow-lg text-center w-[90%] py-2 rounded hover:border-green-600 hover:border hover:bg-green-100 disable" id="optionA" onclick="then(questions[btnIndex].option[0], optionA)"></button>
+            </div>
+            <!--each option-->
+            <div class="flex justify-center">
+                <button class="option bg-white shadow-lg text-center w-[90%] py-2 rounded hover:border-green-600 hover:border hover:bg-green-100 disable" id="optionB" onclick="then(questions[btnIndex].option[1], optionB)"></button>
+            </div>
+            <!--each option-->
+            <div class="flex justify-center">
+                <button class="option bg-white shadow-lg text-center w-[90%] py-2 rounded hover:border-green-600 hover:border hover:bg-green-100 disable" id="optionC" onclick="then(questions[btnIndex].option[2], optionC)"></button>
+            </div>
+            <!--each option-->
+            <div class="flex justify-center">
+                <button class="option bg-white shadow-lg text-center w-[90%] py-2 rounded hover:border-green-600 hover:border hover:bg-green-100 disable" id="optionD" onclick="then(questions[btnIndex].option[3], optionD)"></button>
+            </div>
+        </div>
+        <div class="mt-4 flex  justify-end">
+            <button class="py-2 px-3 bg-gray-900 text-white rounded cursor-pointer hover:bg-gray-800 hidden" onclick="nextQuestion()" id="disNext">Submit</button>
+        </div>
+    </div>
+    </div>
+
+    
+
+
+   <script src="script.js"></script>
+   <script>
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'))
+        document.getElementById('sc_name').textContent = `School Name: ${currentUser.user_school}`
+        document.getElementById('cd_name').textContent = `Candidate Name: ${currentUser.user_name}`
+        
+   </script>
+</body>
+</html>

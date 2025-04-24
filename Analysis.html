@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="flex">
+        <div class="bg-gray-200 w-full">
+            <div class="shadow-lg text-center bg-white lg:text-left ps-2 py-3">
+                <h2 class="font-bold lg:text-2xl  text-md">Lumen et Veritas  Academy Quiz Competition</h2>
+            </div>
+            <h2 class=" text-center text-3xl mt-5 font-semibold">Student Analysis</h2>
+            <div class="flex flex-col bg-gray-200 pb-22" id="analisCont">
+               <!-- <div class="grid w-[87%] mx-auto p-5 bg-white shadow-2xl mt-15 grid-cols-2 gap-5">
+                <div class="">School Name</div>
+                <div class="flex items-center justify-center">Candidate Name</div>
+                <div class="border border-8 border-gray-900 rounded-full p-5 h-72 w-72 flex items-center justify-center">ks</div>
+                <div class="flex items-center justify-center">vfdre</div>
+               </div> -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+<script>
+    function studentAnalysis(){
+    let finUsers = JSON.parse(localStorage.getItem('finishedUsers'))
+    
+    finUsers.forEach(user => {
+        const card = document.createElement('div')
+        card.className = 'grid w-[87%]  mx-auto p-5 bg-white shadow-2xl mt-15 md:grid lg:grid-cols-2 gap-5'
+        const analysisCont = document.getElementById('analisCont')
+        let percentage = user.score/questions.length * 100
+
+        // card.innerHTML = `
+        //     <div class="capitalize">School Name: ${user.school}</div>
+        //     <div class="capitalize">Candidate Name: ${user.name}</div>
+        //     <div class="border border-8 border-gray-900 rounded-full text-4xl p-5 h-72 w-72 flex items-center justify-center">${percentage}%</div>
+        //     <div class="flex items-center">Candidates Score: ${user.score} / ${questions.length}</div>
+        // `
+        
+        analysisCont.innerHTML = `
+                        <div class="grid w-[87%] mx-auto p-5 bg-white shadow-2xl mt-15 grid-cols-2 gap-5">
+                <div class="capitalize">School Name: ${user.school}</div>
+                <div class="capitalize">Student Name: ${user.name}</div>
+                <div class="border border-8 border-gray-900 rounded-full text-4xl p-5 h-72 w-72 flex items-center justify-center">${percentage}%</div>
+                <div class="flex items-center">Candidates Score: ${user.score} / ${questions.length}</div>
+               </div> 
+        `
+
+    // analysisC ont.appendChild(card)
+    })
+
+}
+studentAnalysis()
+
+// function getWinner(){
+//     let finUsers = JSON.parse(localStorage.getItem('finishedUsers'))
+    
+//     let highestScore = finUsers.find(user => user.score === Math.max.apply(Math, finUsers.map(o=>{return o.score})))
+   
+//     document.getElementById('winnerTxt').textContent = `
+//            We are delighted to announce ${highestScore.name.toUpperCase()} from ${highestScore.school.toUpperCase()} as the winner of the annual 
+//            Lumen et Veritas  Academy Quiz Competition. Your hard work and dedication have paid off.
+//     `
+   
+    
+// }
+// getWinner()
+   
+// let finUsers = JSON.parse(localStorage.getItem('finishedUsers'))
+// let highestScore = finUsers.filter(user => user.score === Math.max.apply(Math, finUsers.map(o=>{return o.score})))
+
+
+// highestScore.forEach(user => {
+//     if(finUsers.length >= 3){
+
+// document.getElementById('prevWinner').innerHTML += `
+//     <li class= 'capitalize mt-2'>${user.school} - ${user.name}</li>
+//     `
+// }
+// })
+
+function home(){
+    window.location.href = 'index.html'
+}
+</script>
+</body>
+</html>

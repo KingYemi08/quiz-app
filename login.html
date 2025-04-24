@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+        <div class="w-full">
+            <div class="shadow-lg text-center lg:text-left ps-2 py-3">
+                <h2 class="font-bold lg:text-2xl  text-md">Lumen et Veritas  Academy Quiz Competition</h2>
+            </div>
+            <div class="flex flex-col items-center justify-center h-[86vh]">
+               <div class="border border-[#ccc] p-5 w-100 rounded">
+                <form action="" id="loginForm">
+                    <h2 class="text-center text-xl -mt-2">Sign In</h2>
+                    <div class="mb-3 relative">
+                        <label for="">
+                            Name: <br>  
+                            <input type="text" class=" outline-0 border border-[#ccc] rounded py-2 text-gray-900 mt-1 ps-1 w-full" id="log_user">
+                        </label>
+                        <p class="text-[11px] absolute text-red-500" id="log_user_err"></p>
+                    </div>
+                    <div class="mb-5 relative">
+                        <select class=" outline-0 border border-[#ccc] rounded text-gray-900 mt-2 w-full py-2 -mt-2 " id="log_school">
+                            <option value=''>Select School</option>
+                        </select>
+                        <p class="text-[11px] absolute text-red-500" id="log_school_err"></p>
+                    </div>
+                   
+                </form>
+                <button class="bg-gray-900 w-full rounded py-[5px] cursor-pointer hover:bg-gray-800 text-white " onclick="loginStudent()">Sign in</button>
+                <span class="text-[14px]">No Account? <a href="registration.html" class="hover:text-blue-600">Register Here</a></span>
+               </div>
+            </div>
+        </div>
+
+
+
+    <script src="script.js"></script>
+    <script>
+     const schools = JSON.parse(localStorage.getItem('schoolInfo')) || []
+    const schoolsCont = document.getElementById('log_school')
+    
+    schools.forEach(item =>{
+        schoolsCont.innerHTML += `
+   <option value = '${item.name}'>${item.name}</option>
+`
+    })
+
+         let finUsers = JSON.parse(localStorage.getItem('finishedUsers'))
+let highestScore = finUsers.filter(user => user.score === Math.max.apply(Math, finUsers.map(o=>{return o.score})))
+
+
+highestScore.forEach(user => {
+    if(finUsers.length >= 3){
+
+document.getElementById('prevWinner').innerHTML += `
+    <li class= 'capitalize mt-2'>${user.school} - ${user.name}</li>
+    `
+}
+})
+    </script>
+</body>
+</html>

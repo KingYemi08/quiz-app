@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav class="bg-gray-100 fixed top-0 w-full z-20 shadow-lg">
+        <div class="contain mx-auto w-full lg:px-4 sm:px-1">
+           <div class="flex justify-between item-center py-4">
+            <a href="#" class="text-xl font-bold text-gray-800">Lumen et Veritas  Academy Quiz Competition</a>
+            <div class="block lg:hidden">
+                <button id="mobile-menu-button" class="cursor-pointer text-2xl">⁝</button>
+            </div>
+           
+           <!-- desktop nav -->
+            <ul id="navbar" class="hidden lg:flex space-x-5">
+                <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+                <li><a href="schoolreg.html" class="hover:text-blue-600">Register School</a></li>
+                <li><a href="registration.html" class="hover:text-blue-600">Register Candidate</a></li>
+                <li><a href="#contact" class="hover:text-blue-600">Contact Us</a></li>
+            </ul>
+
+        </div>
+        </div>
+        <!-- mobile nav -->
+         <div id="mobile-menu" class="hidden lg:hidden">
+            <ul class="flex space-y-4 flex-col item-center bg-white py-4">
+                <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+                <li><a href="schoolreg.html" class="hover:text-blue-600">Register School</a></li>
+                <li><a href="registration.html" class="hover:text-blue-600">Register Candidates<li>
+                <li><a href="#contact" class="hover:text-blue-600">Contact Us</a></li>
+            </ul>
+         </div>
+     </nav>
+
+
+     <section class="bg-[url(https://www.shutterstock.com/image-photo/close-students-writing-reading-exam-260nw-1140410687.jpg)]  bg-center bg-cover bg-no-repeat h-screen">
+       <div class="bg-[#00000089] flex flex-col ps-4  justify-center w-full h-full">
+        <div class="text-white text-[16px] lg:text-3xl  leading-[1.5] font-semibold w-[52%]">
+            <span>The Lumen et veritas Quiz is starting soon Register  now  and stand a chance to win #500,000 cash price</span>
+        </div>
+        <a href="schoolreg.html"><button class="rounded-full bg-white w-[25%] lg:w-[10%] py-2 px-3 mt-6 hover:bg-gray-200">Register Now</button></a>
+       </div>
+     </section>
+
+    <section class="py-10 px-6 bg-gray-50">
+        <h2 class="text-2xl text-center font-semibold mb-10">Previous Winners </h2>
+        <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4" id="winHold">
+           <div class="bg-white shadow-2xl p-4">
+            <div class="h-38">
+                <img src="" alt="Scoffield">
+            </div>
+            <div class="text-center">
+                <h4>Micheal Scoffield</h4>
+                <h5>Peaky Academy</h5>
+            </div>
+           </div>
+           <div class="bg-white shadow-2xl p-4">
+            <div class="h-38">
+                <img src="" alt="red">
+            </div>
+            <div class="text-center">
+                <h4>Raymond Reddington</h4>
+                <h5>Richfield Academy</h5>
+            </div>
+           </div>
+           <div class="bg-white shadow-2xl p-4">
+            <div class="h-38">
+                <img src="" alt="Scoffield">
+            </div>
+            <div class="text-center">
+                <h4>Micheal Scoffield</h4>
+                <h5>Peaky Academy</h5>
+            </div>
+           </div>
+           <div class="bg-white shadow-2xl p-4">
+            <div class="h-38">
+                <img src="" alt="Scoffield">
+            </div>
+            <div class="text-center">
+                <h4>Micheal Scoffield</h4>
+                <h5>Peaky Academy</h5>
+            </div>
+           </div>
+           <div class="bg-white shadow-2xl p-4">
+            <div class="h-38">
+                <img src="" alt="Scoffield">
+            </div>
+            <div class="text-center">
+                <h4>Micheal Scoffield</h4>
+                <h5>Peaky Academy</h5>
+            </div>
+           </div>
+           <div class="bg-white shadow-2xl p-4">
+            <div class="h-38">
+                <img src="" alt="Scoffield">
+            </div>
+            <div class="text-center">
+                <h4>Micheal Scoffield</h4>
+                <h5>Peaky Academy</h5>
+            </div>
+           </div>
+        </div>
+    </section>
+
+       <section class="px-6 py-15 flex justify-between item-center bg-[#212529]">
+        <div class=" hidden lg:flex">
+            <p class="m-0 text-sm lg:text-[16px] border-e border-gray-500 text-gray-300 px-2 ">Privacy Policy</p>
+            <p class="m-0 text-sm lg:text-[16px] border-e text-gray-300 border-gray-500 px-2">Terms and Conditions</p>
+            <p class="m-0 text-sm lg:text-[16px] text-gray-300 px-2">Contact us</p>
+        </div>
+        <div class="text-gray-300 space-x-3 ">
+            <span class="border-e order-gray-500 pe-3">&copy; 2024</span>
+            <span>Lumen Et veritas Academy</span>
+        </div>
+   </section>
+</body>
+
+
+<script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button')
+        const mobileMenu = document.getElementById('mobile-menu')
+
+        mobileMenuButton.addEventListener('click', ()=>{
+            mobileMenu.classList.toggle('hidden')
+        })
+
+    
+function getWinner(){
+    let finUsers = JSON.parse(localStorage.getItem('finishedUsers'))
+    
+    let highestScore = finUsers.filter(user => user.score === Math.max.apply(Math, finUsers.map(o=>{return o.score})))
+    console.log(highestScore);
+
+    highestScore.forEach(user=>{
+
+    if(finUsers.length >= 3){
+       const newCard = document.createElement('div')
+       newCard.className = 'bg-white shadow-2xl p-4'
+       newCard.innerHTML = `
+       <div class="h-38">
+                <img src="" alt="${user.name}">
+            </div>
+            <div class="text-center">
+                <h4 class= 'capitalize'>${user.name}</h4>
+                <h5 class =  'capitalize'>${user.school}</h5>
+            </div>
+       `
+       document.getElementById('winHold').appendChild(newCard)
+    }
+    })
+     
+}
+getWinner()
+</script>
+</html>
